@@ -1,3 +1,5 @@
+[![Distribution Workflow](https://img.shields.io/github/actions/workflow/status/xdev-software/template-distributor/distribute.yml?branch=master&label=distribution)](https://github.com/xdev-software/template-distributor/actions/workflows/distribute.yml?query=branch%3Amaster)
+
 # Template Distributor
 
-Distributes Tempaltes to Template repos
+Distributes Templates to Template repos
