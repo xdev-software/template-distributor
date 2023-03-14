@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        targeted-repo: [xdev-software/vaadin-addons-template, xdev-software/xdev-swing-framework-template]
+        targeted-repo: [xdev-software/vaadin-addon-template, xdev-software/xdev-swing-framework-template]
         
     steps:
       - uses: actions/checkout@v3
