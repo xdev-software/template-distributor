@@ -1,20 +1,12 @@
 name: Distribute templates
 
-# This workflow keeps the repo up to date with changes from the template repo (REMOTE_URL)
-# It duplicates the REMOTE_BRANCH (into UPDATE_BRANCH) and tries to merge it into the 
-# this repos default branch (which is checked out here)
-# Note that this requires a PAT (Personal Access Token) - at best from a servicing account
-# Also note that you should have at least once merged the template repo into the current repo manually
-# otherwise a "refusing to merge unrelated histories" error might occur.
-
 on:
   schedule:
-    - cron: '55 2 * * 1'
+    - cron: '55 1 * * 1'
   workflow_dispatch:
 
 env:
   UPDATE_BRANCH: update-from-template
-  REMOTE_URL: https://github.com/xdev-software/base-template.git
   REMOTE_BRANCH: master
 
 permissions:
@@ -26,7 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        targeted-repo: [xdev-software/vaadin-addon-template, xdev-software/xdev-swing-framework-template]
+        include:
+        # Base
+        - source: base-template
+          target: vaadin-addon-template
+        - source: base-template
+          target: xdev-swing-framework-template
+        # Standard Maven
+        - source: standard-maven-template
+          target: vaadin-addon-template
         
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs:
           # If no PAT is used the following error occurs on a push:
           # refusing to allow a GitHub App to create or update workflow `.github/workflows/xxx.yml` without `workflows` permission
           token: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
-          repository: ${{ matrix.targeted-repo }}
+          repository: xdev-software/${{ matrix.target }}
       
       - name: Init Git
         run: |
@@ -47,7 +47,7 @@ jobs:
         id: main
         run: |
           echo "Adding remote template-repo"
-          git remote add template ${{ env.REMOTE_URL }}
+          git remote add template https://github.com/xdev-software/${{ matrix.source }}/base-template
           
           echo "Fetching remote template repo"
           git fetch template
@@ -88,7 +88,7 @@ jobs:
         uses: repo-sync/pull-request@v2
         if: steps.main.outputs.abort == 0
         with:
-          destination_repository: ${{ matrix.targeted-repo }}
+          destination_repository: xdev-software/${{ matrix.target }}
           github_token: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
           source_branch: ${{ env.UPDATE_BRANCH }}
           destination_branch: ${{ steps.main.outputs.current_branch }}
