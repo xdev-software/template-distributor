@@ -47,7 +47,7 @@ jobs:
         id: main
         run: |
           echo "Adding remote template-repo"
-          git remote add template https://github.com/xdev-software/${{ matrix.source }}/base-template
+          git remote add template https://github.com/xdev-software/${{ matrix.source }}
           
           echo "Fetching remote template repo"
           git fetch template
