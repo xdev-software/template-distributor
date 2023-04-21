@@ -5,4 +5,9 @@ Distributes Templates to Template repos
 (as it's not possible to run workflows inside Template Repos)
 
 ## Overview
-![](./assets/Templates.drawio.png)
+Templates are distributed with the following hierarchy:
+
+* [base-template](https://github.com/xdev-software/base-template)
+  * [standard-maven-template](https://github.com/xdev-software/standard-maven-template)
+    * [vaadin-addon-template](https://github.com/xdev-software/vaadin-addon-template)
+  * [xdev-swing-framework-template](https://github.com/xdev-software/xdev-swing-framework-template)
