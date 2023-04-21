@@ -21,7 +21,7 @@ jobs:
         include:
         # Base
         - source: base-template
-          target: vaadin-addon-template
+          target: standard-maven-template
         - source: base-template
           target: xdev-swing-framework-template
         # Standard Maven
