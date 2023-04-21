@@ -3,3 +3,6 @@
 
 Distributes Templates to Template repos
 (as it's not possible to run workflows inside Template Repos)
+
+## Overview
+![](./assets/Templates.drawio.png)
