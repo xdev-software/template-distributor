@@ -28,7 +28,7 @@ jobs:
         # Standard Maven
         - source: standard-maven-template
           target: vaadin-addon-template
-        - soruce: standard-maven-template
+        - source: standard-maven-template
           target: openapi-client-maven-template
         
     steps:
