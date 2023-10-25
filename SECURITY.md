@@ -4,4 +4,4 @@
 
 Please report a security vulnerability [on GitHub Security Advisories](https://github.com/xdev-software/base-template/security/advisories/new).
 
-TEST TEST TEST
+TEST TEST TEST2
