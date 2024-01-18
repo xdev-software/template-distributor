@@ -23,8 +23,6 @@ jobs:
         # Base
         - source: base-template
           target: standard-maven-template
-        - source: base-template
-          target: xdev-swing-framework-template
         # Standard Maven
         - source: standard-maven-template
           target: vaadin-addon-template
