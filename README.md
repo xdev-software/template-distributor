@@ -11,4 +11,3 @@ Templates are distributed with the following hierarchy:
   * [standard-maven-template](https://github.com/xdev-software/standard-maven-template)
     * [vaadin-addon-template](https://github.com/xdev-software/vaadin-addon-template)
     * [openapi-client-maven-template](https://github.com/xdev-software/openapi-client-maven-template)
-  * [xdev-swing-framework-template](https://github.com/xdev-software/xdev-swing-framework-template)
