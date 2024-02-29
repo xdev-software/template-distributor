@@ -23,6 +23,8 @@ jobs:
         # Base
         - source: base-template
           target: standard-maven-template
+        - source: base-template
+          target: intellij-plugin-template
         # Standard Maven
         - source: standard-maven-template
           target: vaadin-addon-template
