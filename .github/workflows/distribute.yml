@@ -21,9 +21,9 @@ jobs:
       matrix:
         include:
         # Base
-        - source: base-template
+        - source: java-template
           target: standard-maven-template
-        - source: base-template
+        - source: java-template
           target: intellij-plugin-template
         # Standard Maven
         - source: standard-maven-template
