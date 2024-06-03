@@ -117,21 +117,6 @@ jobs:
               exit 0
           fi
 
-          echo "Post processing: Trying to automatically fill in template variables"
-          find . -type f \
-            -not -path "./.git/**" \
-            -not -path "./.github/workflows/update-from-template.yml" -print0 \
-            | xargs -0 sed -i "s/template-placeholder/${GITHUB_REPOSITORY#*/}/g"
-
-          git status
-          git add --all
-
-          if [[ "$(git status --porcelain)" != "" ]]; then
-            echo "Filled in template; Committing"
-
-            git commit -m "Fill in template"
-          fi
-
           echo "Pushing auto-merged branch"
           git push -f -u origin ${{ env.UPDATE_BRANCH_MERGED }}
 
