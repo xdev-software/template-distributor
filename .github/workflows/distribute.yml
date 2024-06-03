@@ -36,7 +36,7 @@ jobs:
           target: xdev-software/vaadin-addon-template
         - source: xdev-software/standard-maven-template
           target: xdev-software/openapi-client-maven-template
-        
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,7 +46,7 @@ jobs:
           # refusing to allow a GitHub App to create or update workflow `.github/workflows/xxx.yml` without `workflows` permission
           token: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
           repository: ${{ matrix.target }}
-      
+
       - name: Init Git
         run: |
           git config --global user.email "111048771+xdev-gh-bot@users.noreply.github.com"
@@ -127,8 +127,9 @@ jobs:
 
           echo "create_update_branch_pr=0" >> $GITHUB_OUTPUT
           echo "create_update_branch_merged_pr=1" >> $GITHUB_OUTPUT
-          
-      - name: PR update_branch
+          echo "try_close_update_branch_pr=1" >> $GITHUB_OUTPUT
+
+      - name: Create/Update PR update_branch
         if: steps.manage-branches.outputs.create_update_branch_pr == 1
         env:
           GH_TOKEN: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
@@ -140,7 +141,15 @@ jobs:
             --title "Update from template" \
             --body "An automated PR to sync changes from the template into this repo"
 
-      - name: PR update_branch_merged
+      # Ensure that only a single PR is open (otherwise confusion and spam)
+      - name: Close PR update_branch
+        if: steps.manage-branches.outputs.try_close_update_branch_pr == 1
+        env:
+          GH_TOKEN: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
+        run: |
+          gh pr close "${{ env.UPDATE_BRANCH }}" || true
+
+      - name: Create/Update PR update_branch_merged
         if: steps.manage-branches.outputs.create_update_branch_merged_pr == 1
         env:
           GH_TOKEN: ${{ secrets.UPDATE_FROM_TEMPLATE_PAT }}
@@ -151,9 +160,9 @@ jobs:
           gh_pr_up -B "${{ steps.manage-branches.outputs.base_branch }}" \
             --title "Update from template (auto-merged)" \
             --body "An automated PR to sync changes from the template into this repo"
-      
+
       # Auto-Merge check is not required as template repos don't have any actions enabled
-      
+
       - name: Auto-merge update_branch_merged
         if: steps.manage-branches.outputs.create_update_branch_merged_pr == 1
         run: |
