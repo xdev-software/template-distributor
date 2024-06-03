@@ -5,9 +5,9 @@ on:
     - cron: '55 1 * * *'
   workflow_dispatch:
     inputs:
-      dry_run:
+      no_automatic_merge:
         type: boolean
-        description: 'Dry run'
+        description: 'No automatic merge'
         default: false
 
 env:
@@ -199,8 +199,8 @@ jobs:
             exit 0
           fi
 
-          if [[ "${{ inputs.dry_run }}" == "true" ]]; then
-            echo "Exiting due to dry run"
+          if [[ "${{ inputs.no_automatic_merge }}" == "true" ]]; then
+            echo "Exiting due to no_automatic_merge"
 
             exit 0
           fi
