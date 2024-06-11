@@ -171,7 +171,8 @@ jobs:
           git checkout $base_branch
 
           echo "Fully fetching..."
-          git fetch --unshallow && git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" || true
+          git fetch --unshallow || true
+          git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
           git fetch origin
 
           expected_commit="${{ steps.manage-branches.outputs.update_branch_merged_commit }}"
