@@ -170,8 +170,10 @@ jobs:
           echo "Restoring base branch $base_branch"
           git checkout $base_branch
 
-          echo "Fetching..."
-          git fetch
+          echo "Fully fetching..."
+          git fetch --unshallow || true
+          git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+          git fetch origin
 
           expected_commit="${{ steps.manage-branches.outputs.update_branch_merged_commit }}"
           actual_commit=$(git rev-parse origin/${{ env.UPDATE_BRANCH_MERGED }})
