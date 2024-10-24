@@ -7,8 +7,9 @@ Distributes Templates to Template repos
 ## Overview
 Templates are distributed with the following hierarchy:
 
-* [java-template](https://github.com/xdev-software/java-template)
-  * [standard-maven-template](https://github.com/xdev-software/standard-maven-template)
-    * [vaadin-addon-template](https://github.com/xdev-software/vaadin-addon-template)
-    * [openapi-client-maven-template](https://github.com/xdev-software/openapi-client-maven-template)
-  * [intellij-plugin-template](https://github.com/xdev-software/intellij-plugin-template)
+* [base-template](https://github.com/xdev-software/base-template)
+  * [java-template](https://github.com/xdev-software/java-template)
+    * [standard-maven-template](https://github.com/xdev-software/standard-maven-template)
+      * [vaadin-addon-template](https://github.com/xdev-software/vaadin-addon-template)
+      * [openapi-client-maven-template](https://github.com/xdev-software/openapi-client-maven-template)
+    * [intellij-plugin-template](https://github.com/xdev-software/intellij-plugin-template)
