@@ -27,6 +27,9 @@ jobs:
       matrix:
         include:
         # Base
+        - source: xdev-software/base-template
+          target: xdev-software/java-template
+        # Java
         - source: xdev-software/java-template
           target: xdev-software/standard-maven-template
         - source: xdev-software/java-template
