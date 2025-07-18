@@ -2,7 +2,7 @@ name: Distribute templates
 
 on:
   schedule:
-    - cron: '55 1,2 * * *'
+    - cron: '14 22,23 * * *'
   workflow_dispatch:
     inputs:
       no_automatic_merge:
