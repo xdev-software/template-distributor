@@ -41,7 +41,7 @@ jobs:
           target: xdev-software/openapi-client-maven-template
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # Required because otherwise there are always changes detected when executing diff/rev-list
           fetch-depth: 0
