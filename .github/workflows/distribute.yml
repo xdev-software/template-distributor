@@ -11,8 +11,6 @@ on:
         default: false
 
 env:
-  UPDATE_BRANCH: update-from-template
-  UPDATE_BRANCH_MERGED: update-from-template-merged
   REMOTE_BRANCH: master
 
 permissions:
@@ -40,7 +38,9 @@ jobs:
           target: xdev-software/vaadin-addon-template
         - source: xdev-software/standard-maven-template
           target: xdev-software/openapi-client-maven-template
-
+    env:
+      UPDATE_BRANCH: ${{ format('update-from-template-{0}', matrix.source) }}
+      UPDATE_BRANCH_MERGED: ${{ format('update-from-template-{0}-merged', matrix.source) }}
     steps:
       - uses: actions/checkout@v5
         with:
