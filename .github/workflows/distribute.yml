@@ -28,6 +28,8 @@ jobs:
         # Base
         - source: xdev-software/base-template
           target: xdev-software/java-template
+        - source: xdev-software/java-setup-template
+          target: xdev-software/java-template
         # Java
         - source: xdev-software/java-template
           target: xdev-software/standard-maven-template
