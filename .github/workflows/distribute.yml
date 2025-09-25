@@ -75,7 +75,7 @@ jobs:
           git rev-list ..template/${{ env.REMOTE_BRANCH }}
 
           if [ $(git rev-list --count ..template/${{ env.REMOTE_BRANCH }}) -eq 0 ]; then
-            echo "There are no commits new commits on the template repo"
+            echo "There are no new commits on the template repo"
             
             echo "Deleting origin branch(es) that contain the updates - if present"
             git push -f origin --delete ${{ env.UPDATE_BRANCH }} || true
