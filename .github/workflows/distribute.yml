@@ -44,7 +44,7 @@ jobs:
       UPDATE_BRANCH: ${{ format('update-from-template-{0}', matrix.source) }}
       UPDATE_BRANCH_MERGED: ${{ format('update-from-template-{0}-merged', matrix.source) }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           # Required because otherwise there are always changes detected when executing diff/rev-list
           fetch-depth: 0
