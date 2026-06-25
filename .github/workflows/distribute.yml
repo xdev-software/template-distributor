@@ -210,7 +210,7 @@ jobs:
       UPDATE_BRANCH: ${{ format('update-from-template-{0}', matrix.origin_simplified_normalized_name) }}
       UPDATE_BRANCH_MERGED: ${{ format('update-from-template-{0}-merged', matrix.origin_simplified_normalized_name) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # Required because otherwise there are always changes detected when executing diff/rev-list
           fetch-depth: 0
@@ -468,7 +468,7 @@ jobs:
       UPDATE_BRANCH: ${{ format('update-from-template-{0}', matrix.origin_simplified_normalized_name) }}
       UPDATE_BRANCH_MERGED: ${{ format('update-from-template-{0}-merged', matrix.origin_simplified_normalized_name) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # Required because otherwise there are always changes detected when executing diff/rev-list
           fetch-depth: 0
